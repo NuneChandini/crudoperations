@@ -1,0 +1,74 @@
+<mvc:View
+    controllerName="crudoperations.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+    <Label text="enter the value to check"></Label>
+    <Input id="idinput" class="sapUiSmallMarginBottom"></Input>
+    <Button text="check" press="oncheck"></Button>
+     <ComboBox
+         class="sapUiSmallMarginBottom"
+					id="idComboBoxSuccess"
+						items="{
+					path: '/results',
+					sorter: { path: 'text' }
+				}">
+        	<core:Item  id="erty" key="{ID}" text="{ProductName}" />
+        </ComboBox>
+        <Table id="idProducts" items="{/results}" >
+            <columns>
+                <Column>
+                    <Text text="ID" />
+                </Column>
+                <Column>
+                    <Text text="name" />
+                </Column>
+                <Column>
+                    <Text text="price" />
+                </Column>
+                <Column>
+                    <Text text="rating" />
+                </Column>
+                <Column>
+                <Text text=""/>
+                    <Button icon ="sap-icon://add" press="onCreate"></Button>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{ID}" />
+                        <Text text="{Name}" />
+                        <Text text="{Price}" />
+                        <Input value="{Rating}" editable="false"/>
+                        <HBox >
+                         <Button text="Edit" press="onEdit"/>
+                         <Button text="Delete" press="onDelete"/>
+                         <Button text="Duplicate" press="onDuplicate"/>
+                        </HBox>
+                           
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <Dialog id="idcreate">
+        <Label text="ID"></Label>
+        <Input value=" "></Input>
+         <Label text="Name"></Label>
+        <Input value=""></Input>
+         <Label text="Price"></Label>
+        <Input value=""></Input>
+         <Label text="Rating"></Label>
+        <Input value=""></Input>
+        <Button text="Add" press="onAdd"></Button>
+        <Button text="Cancel" press="onCancel"></Button>
+       
+        </Dialog>
+    </Page>
+</mvc:View>
